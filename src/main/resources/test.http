@@ -3,3 +3,6 @@ GET http://localhost:8080/games
 
 ### [GET] /games/{id} - Get game details by ID
 GET http://localhost:8080/games/2
+
+### [GET] /lists - Get all game lists
+GET http://localhost:8080/lists
