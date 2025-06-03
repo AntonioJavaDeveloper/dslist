@@ -2,6 +2,22 @@ version: "3.7"
 
 services:
   # ====================================================================================================================
+  # JAVA SERVER - USING MULTI-STAGE BUILD
+  # ====================================================================================================================
+  games:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+      args:
+        JAVA_SERVER_PORT: ${JAVA_SERVER_PORT}
+    container_name: games-app
+    ports:
+      - "${JAVA_SERVER_PORT:-9000}:${JAVA_SERVER_PORT:-9000}"
+    environment:
+      - JAVA_SERVER_PORT=${JAVA_SERVER_PORT:-9000}
+    restart: unless-stopped
+
+  # ====================================================================================================================
   # POSTGRES SERVER
   # ====================================================================================================================
   pg-docker:
